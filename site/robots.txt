@@ -1,4 +1,17 @@
+# Renier Lab — Laboratory of Structural Plasticity
+#
+# Content signals (content-signals.org), as served to every crawler below:
+#   search=yes     build a search index and link to us
+#   ai-input=yes   read a page to answer someone's question, with attribution
+#   ai-train=no    do not use this content to train a generative model
+#
+# The lab's software and methods are meant to be found. Being answerable when
+# someone asks an assistant about whole-brain vascular imaging, iDISCO+ or
+# ClearMap is worth more to us than the marginal protection of a blanket block.
+# Training on this content is a separate matter, and is refused.
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 Sitemap: https://renier-lab.com/sitemap.xml
