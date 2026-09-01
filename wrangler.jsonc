@@ -4,13 +4,21 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "renier-lab",
   "compatibility_date": "2026-09-01",
+
+  // Declaring the custom domains here means each deploy reconciles them,
+  // so they never have to be wired up by hand in the dashboard.
+  "routes": [
+    { "pattern": "renier-lab.com",     "custom_domain": true },
+    { "pattern": "www.renier-lab.com", "custom_domain": true }
+  ],
+
   "assets": {
     "directory": "./site/",
 
     // Serve site/404.html with a real 404 status for unknown paths.
     "not_found_handling": "404-page",
 
-    // /research.html and /research both resolve; folder indexes keep their slash.
+    // /research and /research.html both resolve; folder indexes keep their slash.
     "html_handling": "auto-trailing-slash"
   }
 }
