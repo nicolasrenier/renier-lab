@@ -1,9 +1,11 @@
-# Squarespace used trailing-slash paths; keep old links alive.
-/home            /              301
-/research/       /research.html 301
-/team/           /team.html     301
-/people          /team.html     301
-/publications/   /publications.html 301
-/resources/      /resources.html 301
-/news/           /news.html     301
-/contact/        /contact.html  301
+# Old Squarespace paths and stale bookmarks.
+# Cloudflare already redirects /research.html -> /research automatically.
+/home       /              301
+/people     /team          301
+/lab        /team          301
+/members    /team          301
+/about      /research      301
+/papers     /publications  301
+/software   /resources     301
+/tools      /resources     301
+/photos     /gallery       301
