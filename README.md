@@ -63,5 +63,16 @@ features and do nothing in this local server.
 
 ## Deployment
 
-Cloudflare Pages, connected to this repository. Pushing to `main` deploys; pull requests
-get their own preview URL. There is no build command — the output directory is `site`.
+Cloudflare Workers, connected to this repository through Workers Builds. Pushing to `main`
+deploys; other branches get their own preview URL.
+
+`wrangler.jsonc` declares the whole thing: no server code, no build step — Cloudflare serves
+`site/` as static assets, returns `site/404.html` for unknown paths, and resolves both
+`/research` and `/research.html`. `site/_headers` and `site/_redirects` are read by Workers
+and are not themselves served.
+
+To deploy by hand from a checkout:
+
+```bash
+npx wrangler deploy
+```
