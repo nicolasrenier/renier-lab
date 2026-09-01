@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor / tool state
+.claude/settings.local.json
+.vscode/
+*.swp
+
+# Working leftovers
+_to_delete/
+
+# Source material kept locally, not published.
+# These hold CVs, research statements, raw photographs and multi-hundred-MB
+# microscopy TIFFs. Everything the website needs already lives in site/.
+text materials/
+lab members photos and biographies/
+lab fun photos/
+scientific artistic illustrations/

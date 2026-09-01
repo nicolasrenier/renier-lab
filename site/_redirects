@@ -1,0 +1,9 @@
+# Squarespace used trailing-slash paths; keep old links alive.
+/home            /              301
+/research/       /research.html 301
+/team/           /team.html     301
+/people          /team.html     301
+/publications/   /publications.html 301
+/resources/      /resources.html 301
+/news/           /news.html     301
+/contact/        /contact.html  301
