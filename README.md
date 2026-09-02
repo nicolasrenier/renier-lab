@@ -22,7 +22,8 @@ site/                      what gets deployed
   404.html                 not-found page
   css/style.css            all styling
   js/main.js               nav, scroll animations, lightbox, publication filter
-  images/                  hero/, science/, thumbs/science/, lab/, team/
+  images/                  hero/, science/, thumbs/science/, thumbs/news/,
+                           lab/, team/, logos/ (funder logos)
   _headers                 Cloudflare Pages caching and security headers
   _redirects               redirects from the old Squarespace URLs
   robots.txt, sitemap.xml
@@ -51,6 +52,12 @@ also keeps the publication count in the page hero honest.
 `site/images/thumbs/science/` for the tiles and the full-resolution file in
 `site/images/science/` for the lightbox. When adding a science image, add both. Lab
 photographs are already web-sized and used directly.
+
+**News thumbnails** — each news item carries an 88px thumbnail from
+`site/images/thumbs/news/`, cut to 240x240. Science crops fill the tile; funder logos
+from `site/images/logos/` are fitted on a white ground instead (add `news-thumb--logo`
+to the wrapper), and photographs of people use `news-thumb--person` for the circular
+frame. Team photographs are already 400x400 and are referenced directly.
 
 ## Preview locally
 
