@@ -55,8 +55,8 @@ photographs are already web-sized and used directly.
 
 **Short news ("In brief")** — talks, press mentions, short pieces and events go in the
 `brief-list` on both `index.html` (the rail beside the three latest items) and `news.html`
-(the archive under the main list). Newest first; the home page keeps the most recent few,
-the news page keeps everything. One entry is one `<li class="brief-item">`:
+(the rail beside the full list, which sticks to the viewport as you scroll). Newest first;
+the home page keeps the most recent few, the news page keeps everything. One entry is one `<li class="brief-item">`:
 
 ```html
 <li class="brief-item">
