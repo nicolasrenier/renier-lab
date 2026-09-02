@@ -568,6 +568,12 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   display: block;
 }
 
+/* Funder logos sit on their own light ground, fitted rather than cropped */
+.news-thumb--logo {
+  background: #fff;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
 /* People keep the circular frame used for team avatars */
 .news-thumb--person {
   border-radius: 50%;
