@@ -594,6 +594,113 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   font-size: 0.9rem;
 }
 
+/* --- News: short items ("In brief") --- */
+/* Home page: main news on the left, the brief rail on the right. */
+.news-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  gap: 3rem;
+  max-width: 1060px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.news-split .news-list {
+  max-width: none;
+  margin: 0;
+}
+
+.brief-heading {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.brief-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.brief-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.brief-item:last-child {
+  border-bottom: none;
+}
+
+.brief-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.brief-tag {
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+  color: var(--accent);
+}
+
+.brief-tag--talk  { color: #7ec8d4; }
+.brief-tag--press { color: #d9a441; }
+.brief-tag--note  { color: #a98ad4; }
+.brief-tag--event { color: #6fbf8b; }
+
+.brief-date {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.brief-item p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.brief-item a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-accent);
+  transition: color var(--transition);
+}
+
+.brief-item a:hover {
+  color: var(--accent-light);
+}
+
+/* News page: the archive runs full width under the main list. */
+.brief-archive {
+  max-width: 800px;
+  margin: 4rem auto 0;
+}
+
+.brief-archive .brief-list {
+  columns: 2;
+  column-gap: 3rem;
+}
+
+.brief-archive .brief-item {
+  break-inside: avoid;
+}
+
 /* --- Contact --- */
 .contact-grid {
   display: grid;
@@ -946,6 +1053,15 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 
   .gallery-strip {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-split {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .brief-archive .brief-list {
+    columns: 1;
   }
 
   .news-item {

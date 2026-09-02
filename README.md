@@ -53,6 +53,21 @@ also keeps the publication count in the page hero honest.
 `site/images/science/` for the lightbox. When adding a science image, add both. Lab
 photographs are already web-sized and used directly.
 
+**Short news ("In brief")** — talks, press mentions, short pieces and events go in the
+`brief-list` on both `index.html` (the rail beside the three latest items) and `news.html`
+(the archive under the main list). Newest first; the home page keeps the most recent few,
+the news page keeps everything. One entry is one `<li class="brief-item">`:
+
+```html
+<li class="brief-item">
+  <div class="brief-meta"><span class="brief-tag brief-tag--talk">Talk</span><span class="brief-date">Oct 2026</span></div>
+  <p>Invited talk at the FENS Forum, Vienna.</p>
+</li>
+```
+
+Tag classes are `brief-tag--talk`, `--press`, `--note` and `--event`; each has its own colour.
+A commented example block sits in both files ready to copy. Items here need no image.
+
 **News thumbnails** — each news item carries an 88px thumbnail from
 `site/images/thumbs/news/`, cut to 240x240. Science crops fill the tile; funder logos
 from `site/images/logos/` are fitted on a white ground instead (add `news-thumb--logo`
