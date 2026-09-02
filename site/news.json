@@ -1,0 +1,110 @@
+[
+  {
+    "kind": "update",
+    "date": "2026-04",
+    "title": "Developmental vascular atlas published in Cell",
+    "body": "Our comprehensive 3D atlas of postnatal brain vascularization has been published in Cell. This work reveals a three-phase trajectory of brain vascular development, with implications for understanding neurodevelopmental disorders.",
+    "image": "images/thumbs/news/cell-atlas-2026.jpg",
+    "alt": "Vascular labelling in a postnatal mouse brain hemisphere"
+  },
+  {
+    "kind": "update",
+    "date": "2026",
+    "title": "Marwa Cherfaoui awarded an FRM PhD fellowship",
+    "body": "Congratulations to Marwa Cherfaoui, who has been awarded a PhD fellowship from the Fondation pour la Recherche Médicale (FRM) for her project on the role of brain macrophages during pregnancy.",
+    "image": "images/team/marwa.jpg",
+    "alt": "Marwa Cherfaoui",
+    "frame": "person"
+  },
+  {
+    "kind": "update",
+    "date": "2026",
+    "title": "Gabrièle Lienhard awarded an FRM fourth-year fellowship",
+    "body": "Congratulations to Gabrièle Lienhard, who has received a fourth-year PhD fellowship from the Fondation pour la Recherche Médicale (FRM) to continue her work on vascular plasticity during pregnancy.",
+    "image": "images/team/gabriele.jpg",
+    "alt": "Gabrièle Lienhard",
+    "frame": "person"
+  },
+  {
+    "kind": "update",
+    "date": "2025",
+    "title": "LAMBADA atlas publicly available",
+    "body": "The LAMBADA Open Brain Atlas for the developing postnatal mouse brain is now freely accessible at <a href=\"https://lambada.icm-institute.org\" target=\"_blank\" rel=\"noopener\">lambada.icm-institute.org</a>.",
+    "image": "images/thumbs/news/lambada.jpg",
+    "alt": "Annotated brain regions overlaid on a reconstructed vascular network"
+  },
+  {
+    "kind": "update",
+    "date": "2025",
+    "title": "Somatosensory feedback projections paper in iScience",
+    "body": "Our study on the organization and development of bilateral somatosensory feedback projections in mice has been published in iScience.",
+    "image": "images/thumbs/news/somatosensory.jpg",
+    "alt": "Projections descending from the cortical surface"
+  },
+  {
+    "kind": "update",
+    "date": "2023",
+    "title": "ERC Consolidator Grant awarded to the lab",
+    "body": "The lab has been awarded an ERC Consolidator Grant from the European Research Council to study neurovascular plasticity in the mother's brain during pregnancy.",
+    "image": "images/thumbs/news/erc.jpg",
+    "alt": "European Research Council",
+    "frame": "logo"
+  },
+  {
+    "kind": "update",
+    "date": "2022",
+    "title": "Maternal nesting behavior study in Neuron",
+    "body": "Our study identifying Edinger-Westphal peptidergic neurons as enablers of maternal preparatory nesting has been published in Neuron. This work ascribes for the first time an important ethological role to an enigmatic neuromodulatory center.",
+    "image": "images/thumbs/news/nesting.jpg",
+    "alt": "A fully built mouse nest"
+  },
+  {
+    "kind": "update",
+    "date": "2022",
+    "title": "The lab joins the Delta Tissue consortium",
+    "body": "The lab has joined Delta Tissue, an international consortium coordinated by Stéphane Pagès at the Wyss Center and funded by Wellcome Leap, to work on the 3D mapping of human glioblastomas.",
+    "image": "images/thumbs/news/wellcome-leap.jpg",
+    "alt": "Wellcome Leap",
+    "frame": "logo"
+  },
+  {
+    "kind": "update",
+    "date": "2020",
+    "title": "Brain vasculature mapping published in Cell",
+    "body": "Our landmark paper on mapping the fine-scale organization and plasticity of the brain vasculature has been published in Cell. The work reconstructs vascular networks spanning 300 meters with 8 million branch points.",
+    "image": "images/thumbs/news/vasculature-cell.jpg",
+    "alt": "Coronal view of the whole-brain vascular network"
+  },
+  {
+    "kind": "update",
+    "date": "2018",
+    "title": "MSCA fellowship awarded to Alba Vieites Prado",
+    "body": "Congratulations to Alba Vieites Prado, who has been awarded a Marie Sk&#322;odowska-Curie Actions (MSCA) fellowship to work on adult plasticity of the somatosensory cortex.",
+    "image": "images/team/alba.jpg",
+    "alt": "Alba Vieites Prado",
+    "frame": "person"
+  },
+  {
+    "kind": "update",
+    "date": "2017",
+    "title": "ERC Starting Grant awarded to the lab",
+    "body": "The lab has been awarded an ERC Starting Grant from the European Research Council to work on postnatal brain plasticity.",
+    "image": "images/thumbs/news/erc.jpg",
+    "alt": "European Research Council",
+    "frame": "logo"
+  },
+  {
+    "kind": "update",
+    "date": "2017",
+    "title": "Lab founded at the Paris Brain Institute",
+    "body": "Nicolas Renier opens the Laboratory of Structural Plasticity at the Institut du Cerveau (ICM) in Paris, bringing tissue clearing and light-sheet microscopy expertise from Rockefeller University.",
+    "image": "images/thumbs/news/lab-founded.jpg",
+    "alt": "The Paris Brain Institute building"
+  },
+  {
+    "kind": "brief",
+    "date": "2026-04",
+    "tag": "press",
+    "text": "The Paris Brain Institute on the developmental atlas: <a href=\"https://parisbraininstitute.org/news/how-cerebral-blood-vessels-form-after-birth\" target=\"_blank\" rel=\"noopener\">How cerebral blood vessels form after birth</a>."
+  }
+]

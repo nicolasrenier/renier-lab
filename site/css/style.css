@@ -686,14 +686,6 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   color: var(--accent-light);
 }
 
-/* News page: the main list is long and the rail is short, so the rail
-   follows the scroll instead of leaving an empty column. */
-.news-split--sticky .news-brief {
-  position: sticky;
-  top: calc(var(--nav-height) + 2rem);
-  max-height: calc(100vh - var(--nav-height) - 4rem);
-  overflow-y: auto;
-}
 
 /* --- Contact --- */
 .contact-grid {
@@ -1052,12 +1044,6 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   .news-split {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-  }
-
-  /* stacked on mobile, so nothing should stick */
-  .news-split--sticky .news-brief {
-    position: static;
-    max-height: none;
   }
 
   .news-item {

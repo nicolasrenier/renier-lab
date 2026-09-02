@@ -17,7 +17,8 @@ site/                      what gets deployed
   publications.json        source of truth for the publication list
   resources.html           iDISCO+, ClearMap, LAMBADA
   gallery.html             science images and lab photographs
-  news.html                lab updates
+  news.html                generated — see below
+  news.json                source of truth for the news list
   contact.html             address and joining information
   404.html                 not-found page
   css/style.css            all styling
@@ -29,11 +30,12 @@ site/                      what gets deployed
   robots.txt, sitemap.xml
 tools/
   build_publications.py    regenerates the publication list from JSON
+  build_news.py            regenerates the news lists from JSON
 ```
 
 ## Editing
 
-**Text, people, news** — edit the HTML directly. Each page is plain, readable markup;
+**Text and people** — edit the HTML directly. Each page is plain, readable markup;
 the nav and footer are repeated on every page, so a nav change means touching all of them.
 
 **Publications** — never edit `publications.html` between the `PUBLICATIONS:START` and
@@ -53,20 +55,43 @@ also keeps the publication count in the page hero honest.
 `site/images/science/` for the lightbox. When adding a science image, add both. Lab
 photographs are already web-sized and used directly.
 
-**Short news ("In brief")** — talks, press mentions, short pieces and events go in the
-`brief-list` on both `index.html` (the rail beside the three latest items) and `news.html`
-(the rail beside the full list, which sticks to the viewport as you scroll). Newest first;
-the home page keeps the most recent few, the news page keeps everything. One entry is one `<li class="brief-item">`:
+**News** — never edit the news lists in `news.html` or `index.html` by hand; the regions
+between the `NEWS:START`/`NEWS:END` and `BRIEF:START`/`BRIEF:END` markers are generated.
+Add the entry to `site/news.json` and run:
 
-```html
-<li class="brief-item">
-  <div class="brief-meta"><span class="brief-tag brief-tag--talk">Talk</span><span class="brief-date">Oct 2026</span></div>
-  <p>Invited talk at the FENS Forum, Vienna.</p>
-</li>
+```bash
+python3 tools/build_news.py
 ```
 
-Tag classes are `brief-tag--talk`, `--press`, `--note` and `--event`; each has its own colour.
-A commented example block sits in both files ready to copy. Items here need no image.
+The file holds two kinds of entry, in one list:
+
+```json
+{"kind": "update", "date": "2026-04",
+ "title": "Developmental vascular atlas published in Cell",
+ "body":  "Our comprehensive 3D atlas ...",
+ "image": "images/thumbs/news/cell-atlas-2026.jpg",
+ "alt":   "Vascular labelling in a postnatal mouse brain",
+ "frame": "person"}
+
+{"kind": "brief", "date": "2026-10", "tag": "talk",
+ "text": "Invited talk at the FENS Forum, Vienna."}
+```
+
+`update` is a full item with a heading, body and optional thumbnail. `brief` is a one-liner
+for talks, press mentions, short pieces and events; its `tag` is `talk`, `press`, `note` or
+`event`, each with its own colour. `frame` is `person` (circular, for photographs of people),
+`logo` (fitted on white) or omitted (cropped square).
+
+`date` is `"YYYY-MM"` or `"YYYY"` — both the sort key and the source of the displayed label.
+Entries are sorted newest first; a bare year sorts below the months of the same year, and
+same-date entries keep the order they have in the file, so reorder those by moving them.
+Add `"display"` to override a label.
+
+The news page gets everything; the home page gets the latest three updates and four brief
+items (`HOME_UPDATES` / `HOME_BRIEFS` in the script). `title`, `body` and `text` are written
+out as raw HTML so links work — which also means a stray `<` will break the page. `alt` is
+plain text and is escaped for you. Accented characters go in as themselves; the files are
+UTF-8.
 
 **News thumbnails** — each news item carries an 88px thumbnail from
 `site/images/thumbs/news/`, cut to 240x240. Science crops fill the tile; funder logos
