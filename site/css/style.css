@@ -453,12 +453,12 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 
 .pub-section-title {
   font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-secondary);
-  padding-bottom: 0.85rem;
+  color: var(--text-primary);
+  padding-bottom: 1rem;
   margin-bottom: 2.5rem;
   border-bottom: 1px solid var(--border-accent);
 }
@@ -473,12 +473,12 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 
 .pub-subsection-title {
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.75rem;
 }
 
 .pub-year-group {
@@ -487,7 +487,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 
 .pub-year {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 1rem;
