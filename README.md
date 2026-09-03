@@ -46,9 +46,23 @@ the nav and footer are repeated on every page, so a nav change means touching al
 python3 tools/build_publications.py
 ```
 
-Each entry needs `title`, `authors`, `journal` and `year`; `volume`, `pages`, `doi` and
-`pmid` are optional. Titles link to the DOI when present, otherwise to PubMed. The script
+Each entry needs `title`, `authors`, `journal`, `year` and `type`; `volume`, `pages`, `doi`
+and `pmid` are optional. Titles link to the DOI when present, otherwise to PubMed. The script
 also keeps the publication count in the page hero honest.
+
+`type` decides the section, and has to be set by hand — it cannot be derived from the author
+list, because co-corresponding authorship is not visible there:
+
+| `type` | Section |
+|---|---|
+| `primary` | **From the Lab** — research from the lab |
+| `note` | **From the Lab**, *Notes and Reviews* subsection — reviews and commentary from the lab |
+| `previous` | **Previous Work** — first-author work predating the lab |
+| `collaboration` | **Collaborations** — everything else |
+
+Sections appear in that order; within each, papers are grouped by year, newest first. The
+script refuses to build if an entry has a missing or unknown `type`, so a new paper cannot
+slip in unclassified. The filter box hides a section heading when nothing in it matches.
 
 **Gallery images** — the science grid uses 800px-wide copies in
 `site/images/thumbs/science/` for the tiles and the full-resolution file in

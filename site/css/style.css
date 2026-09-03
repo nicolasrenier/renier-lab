@@ -443,6 +443,40 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   font-weight: 500;
 }
 
+.pub-section {
+  margin-bottom: 4.5rem;
+}
+
+.pub-section:last-child {
+  margin-bottom: 0;
+}
+
+.pub-section-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding-bottom: 0.85rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.pub-subsection {
+  margin-top: 3rem;
+}
+
+.pub-subsection-title {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
 .pub-year-group {
   margin-bottom: 2.5rem;
 }
@@ -1311,6 +1345,8 @@ body.lightbox-open { overflow: hidden; }
 }
 
 .pub-year-group[hidden],
+.pub-section[hidden],
+.pub-subsection[hidden],
 .pub-item[hidden] { display: none; }
 
 /* --- Motion preferences --- */

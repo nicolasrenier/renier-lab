@@ -139,6 +139,7 @@ const pubSearch = document.getElementById('pub-search');
 
 if (pubSearch) {
   const groups = Array.from(document.querySelectorAll('.pub-year-group'));
+  const sections = Array.from(document.querySelectorAll('.pub-section, .pub-subsection'));
   const pubs = Array.from(document.querySelectorAll('.pub-item'));
   const countEl = document.getElementById('pub-count');
   const total = pubs.length;
@@ -155,6 +156,9 @@ if (pubSearch) {
     });
     groups.forEach(g => {
       g.hidden = !g.querySelector('.pub-item:not([hidden])');
+    });
+    sections.forEach(s => {
+      s.hidden = !s.querySelector('.pub-item:not([hidden])');
     });
     if (countEl) {
       countEl.textContent = q
