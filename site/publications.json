@@ -354,7 +354,7 @@
   {
     "title": "Long-Range Guidance of Spinal Commissural Axons by Netrin1 and Sonic Hedgehog from Midline Floor Plate Cells.",
     "authors": "Wu Z, Makihara S, Yam PT, Teo S, Renier N, Balekoglu N, Moreno-Bravo JA, Olsen O, Chédotal A, Charron F, Tessier-Lavigne M",
-    "type": "collaboration",
+    "type": "previous",
     "journal": "Neuron",
     "year": "2019",
     "volume": "101",
@@ -462,9 +462,9 @@
     "pmid": "25417164"
   },
   {
-    "title": "Neural migration. Structures of netrin-1 bound to two receptors provide insight into its axon guidance mechanism.",
+    "title": "Structures of netrin-1 bound to two receptors provide insight into its axon guidance mechanism.",
     "authors": "Xu K, Wu Z, Renier N, Antipenko A, Tzvetkova-Robev D, Xu Y, Minchenko M, Nardi-Dei V, Rajashankar KR, Himanen J, Tessier-Lavigne M, Nikolov DB",
-    "type": "collaboration",
+    "type": "previous",
     "journal": "Science",
     "year": "2014",
     "volume": "344",
