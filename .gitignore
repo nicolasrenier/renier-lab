@@ -12,6 +12,9 @@
 # Working leftovers
 _to_delete/
 
+# Preview images the desktop app drops here when Claude sends a file
+Claude outputs/
+
 # Source material kept locally, not published.
 # These hold CVs, research statements, raw photographs and multi-hundred-MB
 # microscopy TIFFs. Everything the website needs already lives in site/.
