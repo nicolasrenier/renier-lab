@@ -18,7 +18,8 @@ author list (co-corresponding authorship is not visible there), so it is set by 
                    lab
     collaboration  everything else                  -> "Collaborations"
 
-Sections keep that order; within each, papers are grouped by year, newest first.
+Sections keep that order. Collaborations are grouped under year headings; the
+lab's own sections are one flat list, newest first, with the year in the citation.
 """
 import html
 import json
@@ -35,14 +36,17 @@ HTML_PATH = SITE / "publications.html"
 START = "<!-- PUBLICATIONS:START"
 END = "<!-- PUBLICATIONS:END -->"
 
-# section key -> (heading, subsection heading or None)
+# section key -> (heading, subsection heading or None, group by year?)
+# The lab's own sections read as one continuous list: with only a handful of
+# papers each, a year heading per entry leaves them stranded. Collaborations are
+# numerous enough that the year headings help you find your way.
 SECTIONS = [
-    ("primary", "From the Lab", None),
-    ("note", None, "Notes and Reviews"),      # nested inside the section above
-    ("previous", "Previous Work", None),
-    ("collaboration", "Collaborations", None),
+    ("primary", "From the Lab", None, False),
+    ("note", None, "Notes and Reviews", False),   # nested inside the section above
+    ("previous", "Previous Work", None, False),
+    ("collaboration", "Collaborations", None, True),
 ]
-TYPES = {key for key, _, _ in SECTIONS}
+TYPES = {key for key, *_ in SECTIONS}
 
 
 def citation(pub):
@@ -64,6 +68,34 @@ def link_for(pub):
     return None
 
 
+def pub_items(pubs, indent):
+    """The <div class="pub-item"> blocks, in the order given."""
+    p = " " * indent
+    out = []
+    for pub in pubs:
+        title = html.escape(pub["title"])
+        url = link_for(pub)
+        titled = (
+            f'<a href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">{title}</a>'
+            if url else title
+        )
+        out += [f'{p}<div class="pub-item">',
+                f'{p}  <p class="pub-title">{titled}</p>',
+                f'{p}  <p class="pub-authors">{html.escape(pub["authors"])}</p>',
+                f'{p}  <p class="pub-journal">{html.escape(citation(pub))}</p>',
+                f'{p}</div>']
+    return "\n".join(out)
+
+
+def flat_list(pubs, indent):
+    """One continuous list, newest first, no year headings."""
+    p = " " * indent
+    pubs = sorted(pubs, key=lambda x: -int(x["year"]))   # stable within a year
+    return "\n".join([f'{p}<div class="pub-list fade-in">',
+                       pub_items(pubs, indent + 2),
+                       f'{p}</div>'])
+
+
 def year_groups(pubs, indent):
     """Year-grouped <div>s, newest year first."""
     by_year = defaultdict(list)
@@ -76,18 +108,7 @@ def year_groups(pubs, indent):
         out.append(f'{p}<div class="pub-year-group fade-in">')
         out.append(f'{p}  <h4 class="pub-year">{html.escape(year)}</h4>')
         out.append(f'{p}  <div class="pub-list">')
-        for pub in by_year[year]:
-            title = html.escape(pub["title"])
-            url = link_for(pub)
-            titled = (
-                f'<a href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">{title}</a>'
-                if url else title
-            )
-            out.append(f'{p}    <div class="pub-item">')
-            out.append(f'{p}      <p class="pub-title">{titled}</p>')
-            out.append(f'{p}      <p class="pub-authors">{html.escape(pub["authors"])}</p>')
-            out.append(f'{p}      <p class="pub-journal">{html.escape(citation(pub))}</p>')
-            out.append(f'{p}    </div>')
+        out.append(pub_items(by_year[year], indent + 4))
         out.append(f'{p}  </div>')
         out.append(f'{p}</div>')
     return "\n".join(out)
@@ -100,14 +121,15 @@ def render(pubs):
                  + ". Use one of: " + ", ".join(sorted(TYPES)) + ".")
 
     out = []
-    for key, heading, sub in SECTIONS:
+    for key, heading, sub, grouped in SECTIONS:
         group = [p for p in pubs if p["type"] == key]
         if not group:
             continue
+        render_list = year_groups if grouped else flat_list
         if sub:                                   # nested in the open section
             out.append('        <div class="pub-subsection">')
             out.append(f'          <h3 class="pub-subsection-title">{html.escape(sub)}</h3>')
-            out.append(year_groups(group, 10))
+            out.append(render_list(group, 10))
             out.append('        </div>')
             out.append('      </div>')            # closes the section it belongs to
             continue
@@ -115,7 +137,7 @@ def render(pubs):
             out.append('      </div>')            # close the previous section
         out.append('      <div class="pub-section">')
         out.append(f'        <h2 class="pub-section-title">{html.escape(heading)}</h2>')
-        out.append(year_groups(group, 8))
+        out.append(render_list(group, 8))
     out.append('      </div>')
     return "\n".join(out)
 

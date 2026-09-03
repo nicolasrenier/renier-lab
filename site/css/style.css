@@ -463,6 +463,10 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   border-bottom: 1px solid var(--border-accent);
 }
 
+.pub-section > .pub-list {
+  margin-bottom: 2.5rem;
+}
+
 .pub-subsection {
   margin-top: 3rem;
 }

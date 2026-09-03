@@ -60,9 +60,14 @@ list, because co-corresponding authorship is not visible there:
 | `previous` | **Previous Work** — first-author work predating the lab |
 | `collaboration` | **Collaborations** — everything else |
 
-Sections appear in that order; within each, papers are grouped by year, newest first. The
-script refuses to build if an entry has a missing or unknown `type`, so a new paper cannot
-slip in unclassified. The filter box hides a section heading when nothing in it matches.
+Sections appear in that order. **Collaborations** is grouped under year headings; the lab's
+own three sections are one continuous list, newest first, with the year in the citation —
+with only a few papers each, a heading per year leaves them stranded. The `grouped` flag in
+the script's `SECTIONS` table controls this per section.
+
+The script refuses to build if an entry has a missing or unknown `type`, so a new paper
+cannot slip in unclassified. The filter box hides a section heading when nothing in it
+matches.
 
 **Gallery images** — the science grid uses 800px-wide copies in
 `site/images/thumbs/science/` for the tiles and the full-resolution file in
