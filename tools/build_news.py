@@ -27,7 +27,10 @@ entities work — and so a stray "<" will break the page. Everything else is
 escaped.
 
 Update categories: funding, publication, prize, resource, milestone.
-Brief tags: talk, press, note, event.
+Brief tags: talk, press, preprint, note, event.
+
+A preprint is announced here rather than as an update: it can still change
+through review, so it does not belong in the major news.
 
 Both vocabularies are also written down in the "_memo" block at the top of the
 JSON, which the script ignores.
@@ -47,7 +50,8 @@ HOME_BRIEFS = 4
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-TAGS = {"talk": "Talk", "press": "Press", "note": "Note", "event": "Event"}
+TAGS = {"talk": "Talk", "press": "Press", "preprint": "Preprint",
+        "note": "Note", "event": "Event"}
 CATEGORIES = {"funding": "Funding", "publication": "Publication", "prize": "Prize",
               "resource": "Resource", "milestone": "Milestone"}
 

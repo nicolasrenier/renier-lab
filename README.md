@@ -104,8 +104,12 @@ ignores it. `entries` holds two kinds:
 
 `update` is a full item with a heading, body and optional thumbnail; its `category` is
 `funding`, `publication`, `prize`, `resource` or `milestone`. `brief` is a one-liner for
-talks, press mentions, short pieces and events; its `tag` is `talk`, `press`, `note` or
-`event`. Both render as a coloured label — filled for categories, outlined for tags, so the
+talks, press mentions, preprints, short pieces and events; its `tag` is `talk`, `press`,
+`preprint`, `note` or `event`.
+
+A preprint is announced as a `brief`, never as an `update`: it can still change through
+review, so it does not belong among the major news. Add it to `publications.json` as well,
+with `"type": "preprint"`. Both render as a coloured label — filled for categories, outlined for tags, so the
 two columns stay distinct side by side. `frame` is `person` (circular, for photographs of
 people), `logo` (fitted on white) or omitted (cropped square).
 

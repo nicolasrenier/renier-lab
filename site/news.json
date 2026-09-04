@@ -6,7 +6,7 @@
     },
     "category (update only)": {
       "funding": "grants, fellowships, funded consortia",
-      "publication": "a paper from the lab",
+      "publication": "a paper from the lab, once published. A preprint goes in the In brief column instead (tag: preprint) — it can still change through review.",
       "prize": "prizes, awards, honours, elections",
       "resource": "a tool, atlas or dataset released to the community",
       "milestone": "anything else that marks the lab's history"
@@ -14,7 +14,8 @@
     "tag (brief only)": {
       "talk": "invited talks, conference presentations, seminars",
       "press": "mentions and interviews in news outlets, press releases",
-      "note": "short-form writing: editorials, commentaries, preprints announced",
+      "preprint": "a preprint posted by the lab. Add it to publications.json too, with type \"preprint\".",
+      "note": "short-form writing: editorials, commentaries, News & Views",
       "event": "symposia, workshops and courses the lab organises or hosts"
     },
     "date": "\"YYYY-MM\" or \"YYYY\". Sorted newest first; a bare year sorts below the months of that year, and same-date entries keep the order they have in this file.",
@@ -144,7 +145,7 @@
     },
     {
       "kind": "brief",
-      "tag": "press",
+      "tag": "preprint",
       "date": "2026-06",
       "text": "Our manuscript on vascular plasticity during pregnancy is available as a pre-print <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6997562\" target=\"_blank\" rel=\"noopener\">on the SSRN Sneak Peek portal</a>."
     },

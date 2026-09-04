@@ -765,10 +765,11 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   color: var(--accent);
 }
 
-.brief-tag--talk  { color: #7ec8d4; }
-.brief-tag--press { color: #d9a441; }
-.brief-tag--note  { color: #a98ad4; }
-.brief-tag--event { color: #6fbf8b; }
+.brief-tag--talk     { color: #7ec8d4; }
+.brief-tag--preprint { color: #d98fa8; }
+.brief-tag--press    { color: #d9a441; }
+.brief-tag--note     { color: #a98ad4; }
+.brief-tag--event    { color: #6fbf8b; }
 
 .brief-date {
   font-size: 0.72rem;
