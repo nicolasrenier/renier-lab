@@ -146,25 +146,40 @@
       "kind": "brief",
       "tag": "press",
       "date": "2026-06",
-      "text": "Our manuscript on vascular plasticity during pregnancy is available as a pre-print <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6997562\" target=\"_blank\" rel=\"noopener\">on the SSRN Seak peek portal.</a>."
+      "text": "Our manuscript on vascular plasticity during pregnancy is available as a pre-print <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6997562\" target=\"_blank\" rel=\"noopener\">on the SSRN Sneak Peek portal</a>."
     },
     {
       "kind": "brief",
       "tag": "talk",
       "date": "2026-07",
-      "text": "Nicolas is giving a talk in Munich at the <a href=\"https://sfb1744.de/news-events/news/nicolas-renier-how-adaptable-is-the-adult-brain-vasculature/74a7cd7307ca6d34\" target=\"_blank\" rel=\"noopener\">CRC 1744: Research on Neurovascular Dieases and compartmentalized brain networks.</a>."
+      "text": "Nicolas is giving a talk in Munich at the <a href=\"https://sfb1744.de/news-events/news/nicolas-renier-how-adaptable-is-the-adult-brain-vasculature/74a7cd7307ca6d34\" target=\"_blank\" rel=\"noopener\">CRC 1744: Research on Neurovascular Diseases and compartmentalized brain networks</a>."
     },
     {
       "kind": "brief",
       "tag": "talk",
       "date": "2026-06",
-      "text": "Our research on plasticity during pregnancy is highlighted in a symposium at FENS forum in Barcelona"
+      "text": "Our research on plasticity during pregnancy is highlighted in a symposium at FENS forum in Barcelona."
     },
     {
       "kind": "brief",
       "tag": "event",
       "date": "2026-04",
-      "text": "The lab is organizing and hosting the 5th iDISCO and ClearMap workshop at the Paris Brain Institute, with a first day of symposium open to everyone, on April 2Oth."
+      "text": "The lab is organizing and hosting the 5th iDISCO and ClearMap workshop at the Paris Brain Institute, with a first day of symposium open to everyone, on April 20th."
+    },
+    {
+      "kind": "update",
+      "category": "prize",
+      "date": "2022-07",
+      "title": "FENS&ndash;EJN Young Investigator Prize awarded to Nicolas Renier",
+      "body": "Nicolas Renier is one of four recipients of the 2022 FENS&ndash;EJN Young Investigator Prize, awarded by the Federation of European Neuroscience Societies and the European Journal of Neuroscience, and presented at the FENS Forum."
+    },
+    {
+      "kind": "update",
+      "category": "prize",
+      "date": "2021",
+      "display": "YEAR?",
+      "title": "Cercle FSER award to the lab",
+      "body": "STUB &mdash; please check the year and the exact wording. The lab has been supported by the Cercle FSER (Fondation Schlumberger pour l'&Eacute;ducation et la Recherche)."
     }
   ]
 }

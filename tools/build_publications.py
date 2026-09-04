@@ -14,8 +14,8 @@ author list (co-corresponding authorship is not visible there), so it is set by 
     primary        research from the lab            -> "From the Lab"
     preprint       a preprint from the lab          -> "From the Lab",
                                                        "Preprints" subsection
-    note           reviews and commentary from the  -> "From the Lab",
-                   lab                                 "Notes and Reviews" subsection
+    note           reviews and commentary from the  -> "From the Lab", "Notes and
+                   lab                                 Reviews", below Preprints
     previous       first-author work predating the  -> "Previous Work"
                    lab
     collaboration  everything else                  -> "Collaborations"
@@ -47,8 +47,8 @@ END = "<!-- PUBLICATIONS:END -->"
 # numerous enough that the year headings help you find your way.
 SECTIONS = [
     ("primary", "From the Lab", None, False),
-    ("note", None, "Notes and Reviews", False),   # nested inside the section above
-    ("preprint", None, "Preprints", False),       # nested too, below Notes and Reviews
+    ("preprint", None, "Preprints", False),       # nested inside the section above
+    ("note", None, "Notes and Reviews", False),   # nested too, below Preprints
     ("previous", "Previous Work", None, False),
     ("collaboration", "Collaborations", None, True),
 ]
