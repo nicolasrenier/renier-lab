@@ -176,10 +176,9 @@
     {
       "kind": "update",
       "category": "prize",
-      "date": "2021",
-      "display": "YEAR?",
-      "title": "Cercle FSER award to the lab",
-      "body": "STUB &mdash; please check the year and the exact wording. The lab has been supported by the Cercle FSER (Fondation Schlumberger pour l'&Eacute;ducation et la Recherche)."
+      "date": "2023",
+      "title": "Cercle FSER laureate",
+      "body": "Nicolas Renier is a 2023 laureate of the Cercle FSER (Fondation Schlumberger pour l'&Eacute;ducation et la Recherche), supporting the lab's work on the development and plasticity of the post-natal brain."
     }
   ]
 }
