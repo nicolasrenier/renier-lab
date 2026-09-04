@@ -170,3 +170,27 @@ if (pubSearch) {
   pubSearch.addEventListener('input', apply);
   apply();
 }
+
+// --- News type filters -------------------------------------------------
+// Each .news-filter names the items it controls via data-filter-target.
+document.querySelectorAll('.news-filter').forEach(bar => {
+  const items = Array.from(document.querySelectorAll(bar.dataset.filterTarget));
+  const chips = Array.from(bar.querySelectorAll('.news-filter-chip'));
+  if (!items.length) return;
+
+  bar.addEventListener('click', event => {
+    const chip = event.target.closest('.news-filter-chip');
+    if (!chip) return;
+    const wanted = chip.dataset.filter;
+    chips.forEach(c => {
+      const on = c === chip;
+      c.classList.toggle('is-active', on);
+      c.setAttribute('aria-pressed', String(on));
+    });
+    items.forEach(item => {
+      item.hidden = wanted !== 'all' && item.dataset.type !== wanted;
+    });
+  });
+
+  chips.forEach(c => c.setAttribute('aria-pressed', String(c.classList.contains('is-active'))));
+});

@@ -7,7 +7,7 @@ news.json is the source of truth. Add or edit entries there, then run:
 
 Two kinds of entry:
 
-  {"kind": "update", "date": "2026-04",
+  {"kind": "update", "date": "2026-04", "category": "publication",
    "title": "Developmental vascular atlas published in Cell",
    "body":  "Our comprehensive 3D atlas ...",
    "image": "images/thumbs/news/cell-atlas-2026.jpg",   # optional
@@ -26,7 +26,11 @@ reorder same-date entries by moving them in the JSON.
 entities work — and so a stray "<" will break the page. Everything else is
 escaped.
 
+Update categories: funding, publication, prize, resource, milestone.
 Brief tags: talk, press, note, event.
+
+Both vocabularies are also written down in the "_memo" block at the top of the
+JSON, which the script ignores.
 """
 import html
 import json
@@ -44,6 +48,8 @@ HOME_BRIEFS = 4
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 TAGS = {"talk": "Talk", "press": "Press", "note": "Note", "event": "Event"}
+CATEGORIES = {"funding": "Funding", "publication": "Publication", "prize": "Prize",
+              "resource": "Resource", "milestone": "Milestone"}
 
 
 def sort_key(entry):
@@ -63,8 +69,15 @@ def label(entry):
 def render_update(e, indent, fade):
     p = " " * indent
     cls = "news-item fade-in" if fade else "news-item"
-    out = [f'{p}<div class="{cls}">',
-           f'{p}  <span class="news-date">{html.escape(label(e))}</span>']
+    cat = e.get("category")
+    if cat not in CATEGORIES:
+        sys.exit(f'Unknown or missing category {cat!r} on "{e["title"]}". '
+                 f'Known categories: {", ".join(CATEGORIES)}.')
+    out = [f'{p}<div class="{cls}" data-type="{cat}">',
+           f'{p}  <div class="news-meta">',
+           f'{p}    <span class="news-date">{html.escape(label(e))}</span>',
+           f'{p}    <span class="news-tag news-tag--{cat}">{CATEGORIES[cat]}</span>',
+           f'{p}  </div>']
     if e.get("image"):
         frame = {"person": " news-thumb--person", "logo": " news-thumb--logo"}.get(e.get("frame"), "")
         out.append(f'{p}  <div class="news-thumb{frame}"><img src="{html.escape(e["image"], quote=True)}" '
@@ -83,12 +96,27 @@ def render_brief(e, indent):
     if tag not in TAGS:
         sys.exit(f'Unknown brief tag {tag!r} on {e["date"]}. Known tags: {", ".join(TAGS)}.')
     return "\n".join([
-        f'{p}<li class="brief-item">',
+        f'{p}<li class="brief-item" data-type="{tag}">',
         f'{p}  <div class="brief-meta"><span class="brief-tag brief-tag--{tag}">{TAGS[tag]}</span>'
         f'<span class="brief-date">{html.escape(label(e))}</span></div>',
         f'{p}  <p>{e["text"]}</p>',
         f'{p}</li>',
     ])
+
+
+def filter_chips(entries, vocab, key, indent, target):
+    """A row of toggles, listing only the values actually present."""
+    present = [k for k in vocab if any(e.get(key) == k for e in entries)]
+    if len(present) < 2:
+        return ""                     # nothing to choose between
+    p = " " * indent
+    out = [f'{p}<div class="news-filter" data-filter-target="{target}">',
+           f'{p}  <button type="button" class="news-filter-chip is-active" data-filter="all">All</button>']
+    for k in present:
+        out.append(f'{p}  <button type="button" class="news-filter-chip news-filter-chip--{k}" '
+                   f'data-filter="{k}">{html.escape(vocab[k])}</button>')
+    out.append(f'{p}</div>')
+    return "\n".join(out)
 
 
 def replace_region(page_text, name, body, path):
@@ -104,7 +132,9 @@ def replace_region(page_text, name, body, path):
 
 
 def main():
-    entries = json.loads(JSON_PATH.read_text(encoding="utf-8"))
+    data = json.loads(JSON_PATH.read_text(encoding="utf-8"))
+    # the JSON carries a "_memo" block for whoever edits it; skip it
+    entries = data if isinstance(data, list) else data["entries"]
     for e in entries:
         if not re.fullmatch(r"\d{4}(-\d{2})?", e.get("date", "")):
             sys.exit(f'Bad date {e.get("date")!r} — expected "YYYY-MM" or "YYYY".')
@@ -116,15 +146,22 @@ def main():
     if unknown:
         sys.exit(f'Unknown kind(s): {", ".join(sorted(unknown))}. Use "update" or "brief".')
 
-    for path, ups, brs, indent, fade in [
-        (SITE / "news.html", updates, briefs, 10, True),
-        (SITE / "index.html", updates[:HOME_UPDATES], briefs[:HOME_BRIEFS], 10, False),
+    for path, ups, brs, indent, fade, chips in [
+        (SITE / "news.html", updates, briefs, 10, True, True),
+        (SITE / "index.html", updates[:HOME_UPDATES], briefs[:HOME_BRIEFS], 10, False, False),
     ]:
         page = path.read_text(encoding="utf-8")
         page = replace_region(page, "NEWS",
                               "\n\n".join(render_update(e, indent, fade) for e in ups), path)
         page = replace_region(page, "BRIEF",
                               "\n".join(render_brief(e, indent + 2) for e in brs), path)
+        if chips:
+            page = replace_region(page, "NEWS_FILTER",
+                                  filter_chips(ups, CATEGORIES, "category", 8,
+                                               ".news-list .news-item"), path)
+            page = replace_region(page, "BRIEF_FILTER",
+                                  filter_chips(brs, TAGS, "tag", 10,
+                                               ".brief-list .brief-item"), path)
         path.write_text(page, encoding="utf-8")
         print(f"Wrote {len(ups)} updates and {len(brs)} brief items to {path.relative_to(ROOT)}")
 

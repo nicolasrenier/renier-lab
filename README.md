@@ -50,12 +50,16 @@ Each entry needs `title`, `authors`, `journal`, `year` and `type`; `volume`, `pa
 and `pmid` are optional. Titles link to the DOI when present, otherwise to PubMed. The script
 also keeps the publication count in the page hero honest.
 
+The file is `{"_memo": {...}, "publications": [...]}`; `_memo` records the vocabulary below
+and the script ignores it.
+
 `type` decides the section, and has to be set by hand — it cannot be derived from the author
 list, because co-corresponding authorship is not visible there:
 
 | `type` | Section |
 |---|---|
 | `primary` | **From the Lab** — research from the lab |
+| `preprint` | **From the Lab**, *Preprints* subsection — not yet in a journal. Use the server as the `journal` (bioRxiv, medRxiv) and its DOI |
 | `note` | **From the Lab**, *Notes and Reviews* subsection — reviews and commentary from the lab |
 | `previous` | **Previous Work** — first-author work predating the lab |
 | `collaboration` | **Collaborations** — everything else |
@@ -82,10 +86,12 @@ Add the entry to `site/news.json` and run:
 python3 tools/build_news.py
 ```
 
-The file holds two kinds of entry, in one list:
+The file is `{"_memo": {...}, "entries": [...]}`. `_memo` is a note to whoever edits it —
+the tag vocabularies and the date rules, repeated where you need them — and the script
+ignores it. `entries` holds two kinds:
 
 ```json
-{"kind": "update", "date": "2026-04",
+{"kind": "update", "date": "2026-04", "category": "publication",
  "title": "Developmental vascular atlas published in Cell",
  "body":  "Our comprehensive 3D atlas ...",
  "image": "images/thumbs/news/cell-atlas-2026.jpg",
@@ -96,10 +102,16 @@ The file holds two kinds of entry, in one list:
  "text": "Invited talk at the FENS Forum, Vienna."}
 ```
 
-`update` is a full item with a heading, body and optional thumbnail. `brief` is a one-liner
-for talks, press mentions, short pieces and events; its `tag` is `talk`, `press`, `note` or
-`event`, each with its own colour. `frame` is `person` (circular, for photographs of people),
-`logo` (fitted on white) or omitted (cropped square).
+`update` is a full item with a heading, body and optional thumbnail; its `category` is
+`funding`, `publication`, `prize`, `resource` or `milestone`. `brief` is a one-liner for
+talks, press mentions, short pieces and events; its `tag` is `talk`, `press`, `note` or
+`event`. Both render as a coloured label — filled for categories, outlined for tags, so the
+two columns stay distinct side by side. `frame` is `person` (circular, for photographs of
+people), `logo` (fitted on white) or omitted (cropped square).
+
+The news page carries a row of filter chips above each column, listing only the values
+actually present; the script generates them, so a new category appears there by itself. The
+home page has no chips — it shows too few items for them to earn their place.
 
 `date` is `"YYYY-MM"` or `"YYYY"` — both the sort key and the source of the displayed label.
 Entries are sorted newest first; a bare year sorts below the months of the same year, and

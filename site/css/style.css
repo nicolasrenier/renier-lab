@@ -577,16 +577,86 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   border-color: var(--border-accent);
 }
 
-.news-date {
+.news-meta {
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  min-width: 104px;
+  padding-top: 0.15rem;
+}
+
+.news-date {
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent);
   letter-spacing: 0.05em;
-  min-width: 90px;
-  padding-top: 0.15rem;
 }
+
+/* Category label on a full news item. Filled, where the brief tags are
+   outlined, so the two columns stay visually distinct side by side. */
+.news-tag {
+  font-family: var(--font-heading);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.news-tag--funding     { background: rgba(217, 164, 65, 0.18); color: #e8c07d; }
+.news-tag--publication { background: rgba(78, 168, 181, 0.18); color: #8fd4de; }
+.news-tag--prize       { background: rgba(214, 132, 132, 0.18); color: #e5a3a3; }
+.news-tag--resource    { background: rgba(111, 191, 139, 0.18); color: #96d6ae; }
+.news-tag--milestone   { background: rgba(169, 138, 212, 0.18); color: #c2aae2; }
+
+/* --- Filter chips above each news column --- */
+.news-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.news-filter-chip {
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.news-filter-chip:hover {
+  color: var(--text-secondary);
+  border-color: var(--border-accent);
+}
+
+.news-filter-chip.is-active {
+  color: var(--bg-primary);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.news-filter-chip:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
+}
+
+.news-item[hidden],
+.brief-item[hidden] { display: none; }
 
 .news-thumb {
   flex-shrink: 0;
@@ -1086,6 +1156,12 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 
   .news-item {
     flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .news-meta {
+    flex-direction: row;
+    align-items: center;
     gap: 0.75rem;
   }
 

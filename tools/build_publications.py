@@ -12,11 +12,16 @@ Only `title`, `authors`, `journal`, `year` and `type` are required.
 author list (co-corresponding authorship is not visible there), so it is set by hand:
 
     primary        research from the lab            -> "From the Lab"
+    preprint       a preprint from the lab          -> "From the Lab",
+                                                       "Preprints" subsection
     note           reviews and commentary from the  -> "From the Lab",
                    lab                                 "Notes and Reviews" subsection
     previous       first-author work predating the  -> "Previous Work"
                    lab
     collaboration  everything else                  -> "Collaborations"
+
+The vocabulary is also written down in the "_memo" block at the top of the JSON,
+which the script ignores.
 
 Sections keep that order. Collaborations are grouped under year headings; the
 lab's own sections are one flat list, newest first, with the year in the citation.
@@ -43,6 +48,7 @@ END = "<!-- PUBLICATIONS:END -->"
 SECTIONS = [
     ("primary", "From the Lab", None, False),
     ("note", None, "Notes and Reviews", False),   # nested inside the section above
+    ("preprint", None, "Preprints", False),       # nested too, below Notes and Reviews
     ("previous", "Previous Work", None, False),
     ("collaboration", "Collaborations", None, True),
 ]
@@ -131,9 +137,8 @@ def render(pubs):
             out.append(f'          <h3 class="pub-subsection-title">{html.escape(sub)}</h3>')
             out.append(render_list(group, 10))
             out.append('        </div>')
-            out.append('      </div>')            # closes the section it belongs to
             continue
-        if out and not out[-1].startswith('      </div>'):
+        if out:
             out.append('      </div>')            # close the previous section
         out.append('      <div class="pub-section">')
         out.append(f'        <h2 class="pub-section-title">{html.escape(heading)}</h2>')
@@ -142,8 +147,14 @@ def render(pubs):
     return "\n".join(out)
 
 
+def load(path, key):
+    """The JSON files carry a "_memo" block for whoever edits them; skip it."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return data if isinstance(data, list) else data[key]
+
+
 def main():
-    pubs = json.loads(JSON_PATH.read_text(encoding="utf-8"))
+    pubs = load(JSON_PATH, "publications")
     page = HTML_PATH.read_text(encoding="utf-8")
 
     if START not in page or END not in page:
